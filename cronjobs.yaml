@@ -1,0 +1,5 @@
+---
+cronJobs:
+  - name: example
+    schedule: "*/5 * * * *"
+    command: ["/bin/sh", "-c", "Rscript example.R"]
