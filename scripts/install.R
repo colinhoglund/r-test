@@ -1,11 +1,12 @@
 install.packages(c(
-  "dplyr",
-  "matrixStats",
-  "googlesheets",
-  "tictoc",
-  "sqldf",
   "GetoptLong",
-  "tidyr",
+  "RcppRoll",
   "data.table",
-  "RcppRoll"
+  "dplyr",
+  "googlesheets",
+  "matrixStats",
+  "sqldf",
+  "tictoc",
+  "tidyr",
+  "zoo",
 ))
