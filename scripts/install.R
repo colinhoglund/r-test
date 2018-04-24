@@ -8,5 +8,5 @@ install.packages(c(
   "sqldf",
   "tictoc",
   "tidyr",
-  "zoo",
+  "zoo"
 ))
