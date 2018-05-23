@@ -1,7 +1,18 @@
 ---
 pipeline:
+  # only build the image when Dockerfile changes
+  build:
+    image: alpine
+    commands:
+      - 'DIFF="$(git --no-pager diff --diff-filter=ACMR --name-only "$(git merge-base origin/master HEAD)" | grep Dockerfile)"'
+      - '[ -n "$DIFF" ] && cat Dockerfile > Dockerfile.generated'
+    when:
+      branch: master
+      event: push
+
   publish:
     image: plugins/ecr
+    dockerfile: Dockerfile.generated
     secrets: [ ecr_access_key, ecr_secret_key ]
     registry: 795250896452.dkr.ecr.us-east-1.amazonaws.com
     repo: 795250896452.dkr.ecr.us-east-1.amazonaws.com/devops/${DRONE_REPO_NAME}
