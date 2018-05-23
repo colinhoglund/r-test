@@ -5,7 +5,7 @@ pipeline:
     image: python
     commands:
       - 'DIFF="$(git --no-pager diff --diff-filter=ACMR --name-only "$(git merge-base origin/master HEAD)" -- Dockerfile)"'
-      - '[ -n "$DIFF" ] && cat Dockerfile > Dockerfile.generated'
+      - 'if [ -n "$DIFF" ]; then cat Dockerfile > Dockerfile.generated; fi'
     when:
       branch: master
       event: push
