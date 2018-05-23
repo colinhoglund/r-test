@@ -2,7 +2,7 @@
 pipeline:
   # only build the image when Dockerfile changes
   build:
-    image: alpine
+    image: python
     commands:
       - 'DIFF="$(git --no-pager diff --diff-filter=ACMR --name-only "$(git merge-base origin/master HEAD)" | grep Dockerfile)"'
       - '[ -n "$DIFF" ] && cat Dockerfile > Dockerfile.generated'
